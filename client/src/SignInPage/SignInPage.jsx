@@ -29,7 +29,7 @@ function SignInPage() {
                 <div className={style.pwd}>
                     <input id='password' placeholder="Must be at least 8 characters." onChange={getInpValue} />
                 </div>
-                <div className={style.btn} onClick={send}>Continue</div>
+                <div className={style.btn} onClick={send} >Continue</div>
             </div>
         </>
     )
