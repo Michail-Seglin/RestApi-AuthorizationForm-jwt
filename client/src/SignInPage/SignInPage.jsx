@@ -1,19 +1,31 @@
 import Header from "../components/Header/Header"
 import style from './signInPage.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from "axios"
+import useAuth from "../hooks/useAuth"
+
 
 function SignInPage() {
+    const { logIn } = useAuth()
+
     const [inpValue, setInpvalue] = useState({ email: '', password: '' });
+
+    const navigate = useNavigate();
 
     function getInpValue(e) {
         setInpvalue({ ...inpValue, [e.target.id]: e.target.value })
     }
 
     async function send() {
-        const res = await axios.post('http://localhost:3001/user/auth', inpValue)
+        const res = await axios.post('http://localhost:3001/user/auth', inpValue, {
+            withCredentials
+                : true
+        })
+
         console.log(res);
+        logIn();
+        navigate('/home')
     }
     return (
         <>

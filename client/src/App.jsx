@@ -1,18 +1,14 @@
 import { Routes, Route } from 'react-router-dom'
-import HomePage from './HomePage/HomePage'
-import SignInPage from './SignInPage/SignInPage'
-import SignUpPage from './SignUpPage/SignUpPage'
+import RoutesProvider from './RoutesProvider/RoutesProvider'
+import useAuth from './hooks/useAuth'
 
 function App() {
-
-
+  const { token } = useAuth()
+  console.log(token);
+  const Route = RoutesProvider(!!token)
   return (
     <>
-      <Routes>
-        <Route path='/' element={<SignInPage />}></Route>
-        <Route path='/home' element={<HomePage />}></Route>
-        <Route path='/signup' element={<SignUpPage />}></Route>
-      </Routes>
+      {Route}
     </>
   )
 }

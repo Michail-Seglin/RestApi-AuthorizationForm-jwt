@@ -1,6 +1,6 @@
 const express = require('express');
 const { getAllUsers, createUser, deleteUser, getUserById, authUser, updateUser } = require('../service/sevice');
-
+const createToken = require('../helper/jwt')
 const routeUser = express.Router();
 
 routeUser.get('/', async (req, res) => {
@@ -36,9 +36,14 @@ routeUser.post('/', async (req, res) => {
 routeUser.post('/auth', async (req, res) => {
     try {
         const { email, password } = req.body;
-        const data = await authUser(email, password)
-
-        res.status(200).send(data)
+        const userData = await authUser(email, password)
+        const token = createToken(userData);
+        res.cookie('access_token', token, {
+            httpOnly: false,
+            secure: true
+        })
+        
+        res.status(200).send(userData)
     } catch (er) {
         res.status(404).send(er.message);
     }
