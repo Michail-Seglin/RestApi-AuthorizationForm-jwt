@@ -5,7 +5,9 @@ function HomePage() {
     return (
         <>
             <Header></Header>
-            <h1>HomePage</h1>
+            <div className={style.way}></div>
+            <h1>Woohoo!</h1>
+            <p>You have successfully logged into the system, and a token has been assigned to you. To log out, please click on 'Sign Out'.</p>
         </>
     )
 }
