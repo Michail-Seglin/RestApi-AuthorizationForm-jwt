@@ -20,8 +20,7 @@ function SignUpPage() {
             <Header />
             <div className={style.main}>
                 <h1>Welcome, let's create an account</h1>
-                <p>Sign In                    Log in to access your account or create one. Verify your email for seamless access.                    email                    Your email                    password                    Must be at least 8 characters.                    Continue
-                    Not registered yet? Sign Up</p>
+                <p>Create an account to keep track of your customers, and contributors. Once your account has been created then don’t forget to verify your account through mail.</p>
 
                 <div className={style.wrapper}>
                     <input id='name' placeholder='Your name' onChange={getInpValue} ></input>
